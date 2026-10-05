@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Il nostro viaggio a Londra · Stefano, Katrin, Niccolò &amp; Carlotta · 2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ink:#0e1624; --muted:#6b7a94; --bg:#f0f2f7; --card:#fff;
+      --blue:#003a8c; --line:#dde1eb; --soft:#eaecf4;
+      --shadow:0 8px 28px rgba(14,22,36,.10);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:"Inter",ui-sans-serif,system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;font-size:16px}
+    a{color:inherit;text-decoration:none}
+
+    /* HERO */
+    .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:#0a0f1e}
+    .hero-bg{position:absolute;inset:0}
+    .hero-bg img{width:100%;height:100%;object-fit:cover;display:block}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,15,30,.15) 0%,rgba(10,15,30,.80) 100%)}
+    .hero-content{position:relative;z-index:2;padding:40px 22px 52px;max-width:680px}
+    .hero-label{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.2);border-radius:4px;padding:5px 10px;margin-bottom:18px}
+    .hero h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(2.6rem,9vw,4.8rem);font-weight:900;line-height:.97;color:#fff;margin-bottom:14px}
+    .hero h1 em{font-style:italic;color:#f0d080}
+    .hero-names{font-size:clamp(.9rem,3vw,1.1rem);font-weight:600;color:rgba(255,255,255,.82);margin-bottom:16px}
+    .hero p{font-size:.95rem;color:rgba(255,255,255,.65);max-width:520px;line-height:1.6;margin-bottom:24px}
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{font-size:.82rem;font-weight:600;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;backdrop-filter:blur(8px)}
+
+    /* NAV */
+    .nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+    .nav::-webkit-scrollbar{display:none}
+    .nav-inner{display:flex;gap:2px;padding:10px 16px;min-width:max-content}
+    .nav a{font-size:.85rem;font-weight:700;padding:8px 13px;border-radius:8px;color:var(--muted);white-space:nowrap;transition:background .15s,color .15s}
+    .nav a:hover{background:var(--soft);color:var(--ink)}
+
+    main{max-width:740px;margin:0 auto;padding:28px 16px 80px}
+
+    /* SUMMARY */
+    .summary{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:36px;margin-top:-44px;position:relative;z-index:3}
+    .summary-box{background:#fff;border-radius:16px;padding:16px;box-shadow:var(--shadow);border:1px solid var(--line)}
+    .summary-box strong{display:block;font-size:.85rem;margin-bottom:3px}
+    .summary-box span{color:var(--muted);font-size:.8rem;line-height:1.35}
+
+    /* SECTION */
+    .section{margin-top:40px}
+    .section-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+    .section h2{font-family:"Playfair Display",Georgia,serif;font-size:clamp(1.7rem,5vw,2.4rem);font-weight:700;line-height:1.1;margin-bottom:6px}
+    .section .sub{color:var(--muted);font-size:.9rem;margin-bottom:20px}
+
+    /* NOTICE */
+    .notice{padding:14px 16px;border-radius:14px;background:#fffbea;border:1px solid #e8d068;color:#5a3e00;font-size:.88rem;line-height:1.5}
+    .notice strong{color:#3a2700}
+
+    /* DAY */
+    .day{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow);margin-top:18px}
+    .day-cover{height:260px;position:relative;background-color:#1a2340}
+    .day-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+    .day-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,15,30,.05) 25%,rgba(10,15,30,.82) 100%)}
+    .day-title{position:absolute;left:20px;right:20px;bottom:20px;z-index:2;color:#fff}
+    .day-title small{display:block;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:6px}
+    .day-title h3{font-family:"Playfair Display",Georgia,serif;font-size:clamp(1.4rem,5vw,2rem);font-weight:700;line-height:1.15}
+    .day-body{padding:20px}
+
+    /* PHOTOS */
+    .photos-heading{font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:12px}
+    .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:24px}
+    .photo-grid.three{grid-template-columns:1fr 1fr 1fr}
+    .photo-card{position:relative;border-radius:14px;overflow:hidden;background:#1a2340;aspect-ratio:4/3}
+    .photo-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+    .photo-card:hover img{transform:scale(1.04)}
+    .photo-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(8,14,28,.85) 100%);pointer-events:none}
+    .photo-caption{position:absolute;left:10px;right:10px;bottom:10px;z-index:2;color:#fff}
+    .photo-caption b{display:block;font-size:.8rem;line-height:1.2}
+    .photo-caption span{display:block;font-size:.7rem;color:rgba(255,255,255,.75);margin-top:2px;line-height:1.3}
+
+    /* TIMELINE */
+    .timeline{display:grid;gap:14px;margin-top:6px}
+    .stop{display:grid;grid-template-columns:64px 1fr;gap:14px;position:relative}
+    .stop:not(:last-child)::before{content:"";position:absolute;left:31px;top:36px;bottom:-18px;width:2px;background:var(--line)}
+    .stop-time{font-weight:800;font-size:.8rem;color:var(--blue);padding-top:13px;text-align:right;line-height:1.2}
+    .stop-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 14px}
+    .stop-card.pranzo{background:#f6fbf7;border-color:#b6dfc0}
+    .stop-card.cena{background:#fdf6f0;border-color:#f0cfa8}
+    .stop-time.pranzo{color:#0f6b47}
+    .stop-time.cena{color:#9a4e10}
+    .stop-card h4{font-size:.95rem;font-weight:700;margin-bottom:5px}
+    .stop-card p{font-size:.84rem;color:var(--muted);line-height:1.5;margin:0}
+    .transport{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:5px 9px;border-radius:8px;background:#f0f2f7;color:#3a4560;font-size:.78rem;font-weight:700}
+    .tube{display:inline-block;padding:1px 6px;border-radius:999px;color:#fff;font-size:.7rem;font-weight:800}
+    .northern{background:#000}.piccadilly{background:#003399}.circle{background:#FFD300;color:#000}
+
+    /* ACTIONS */
+    .actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}
+    .btn{display:inline-flex;align-items:center;gap:6px;text-decoration:none;padding:8px 12px;border-radius:9px;font-weight:700;font-size:.82rem;border:1px solid var(--line);background:#fff;color:var(--ink);flex:1;justify-content:center;white-space:nowrap;min-width:0}
+    .btn.map{background:#edf4ff;color:#003a8c;border-color:#c2d9ff}
+    .btn.book{background:#fff0f2;color:#a00e28;border-color:#f5c4cc}
+    .btn.primary{background:#0e1624;color:#fff;border-color:#0e1624}
+
+    /* BOOKING */
+    .book-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+    .book-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px}
+    .book-card h4{font-size:.9rem;font-weight:700;margin-bottom:5px}
+    .book-card p{font-size:.8rem;color:var(--muted);line-height:1.45;margin-bottom:10px}
+
+    .footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:.78rem;line-height:1.6}
+
+    @media(max-width:500px){
+      .photo-grid,.photo-grid.three{grid-template-columns:1fr 1fr}
+      .book-grid{grid-template-columns:1fr}
+      .stop{grid-template-columns:56px 1fr}
+      .stop:not(:last-child)::before{left:27px}
+      .stop-time{font-size:.72rem}
+      .day-cover{height:220px}
+      .hero h1{font-size:2.5rem}
+    }
+  
+    /* foto — visibili di default, sfondo gradiente come placeholder */
+    img{opacity:1}
+    .photo-card,.day-cover{background:linear-gradient(135deg,#1a2340,#34508a)}
+
+    /* link Tripadvisor sulle foto */
+    .ta-link{position:absolute;inset:0;z-index:3;display:block}
+    .ta-link span{position:absolute;top:8px;right:8px;font-size:.66rem;font-weight:700;color:#fff;background:rgba(0,0,0,.55);padding:4px 8px;border-radius:999px;backdrop-filter:blur(4px)}
+    .day-cover .ta-link span{top:12px;right:12px;font-size:.72rem}
+    .ta-link:focus-visible{outline:3px solid #34e0a1;outline-offset:-3px}
+    .day-title{pointer-events:none}
+  </style>
+<script>
+function nextImg(img){
+  var list = (img.dataset.fb||'').split('|').filter(Boolean);
+  if (list.length){ img.dataset.fb = list.slice(1).join('|'); img.src = list[0]; }
+  else { img.onerror = null; img.style.opacity = '0'; }
+}
+// Forza il reload delle immagini non ancora caricate su Safari mobile
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('img').forEach(function(img){
+    if (!img.complete || img.naturalWidth === 0){
+      var src = img.src;
+      img.src = '';
+      img.src = src;
+    }
+  });
+});
+</script>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/London_Skyline_%28125508655%29.jpeg/1280px-London_Skyline_%28125508655%29.jpeg" alt="Londra skyline"/>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-label">Londra · 19–23 maggio 2027</span>
+    <h1>Il nostro viaggio<br/>a <em>Londra!</em></h1>
+    <p class="hero-names">Stefano · Katrin · Niccolò · Carlotta</p>
+    <p>4 notti al <strong style="color:#fff">Premier Inn London St Pancras Station</strong>. Itinerario per zone, pranzo street food, cena seduta e un pulsante Maps per ogni spostamento.</p>
+    <div class="chips">
+      <span class="chip">✈️ FCO → LTN 06:40</span>
+      <span class="chip">🏨 St Pancras</span>
+      <span class="chip">🪄 Harry Potter Studios</span>
+      <span class="chip">🚇 Tube + treni</span>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#arrivo">Arrivo</a>
+    <a href="#d19">19 mag</a>
+    <a href="#d20">20 mag</a>
+    <a href="#d21">21 mag</a>
+    <a href="#d22">22 mag</a>
+    <a href="#d23">Rientro</a>
+    <a href="#prenota">Da prenotare</a>
+  </div>
+</nav>
+
+<main>
+  <div class="summary">
+    <div class="summary-box"><strong>🏨 Hotel</strong><span>Premier Inn London St Pancras Station</span></div>
+    <div class="summary-box"><strong>👨‍👩‍👧‍👦 Famiglia</strong><span>Stefano, Katrin, Niccolò &amp; Carlotta</span></div>
+    <div class="summary-box"><strong>🥗 Pranzo</strong><span>Street food · veloci e buoni</span></div>
+    <div class="summary-box"><strong>🍽️ Ritmo</strong><span>1° giorno light, 3 giorni pieni</span></div>
+  </div>
+
+  <!-- ARRIVO -->
+  <section id="arrivo" class="section">
+    <div class="section-label">Mercoledì 19 maggio</div>
+    <h2>Arrivo: Luton → hotel</h2>
+    <p class="sub">Atterraggio 08:30 · arrivo hotel ~10:30</p>
+    <div class="notice"><strong>Tempo realistico:</strong> considerate arrivo al Premier Inn intorno alle <strong>10:30</strong> e uscita dall'hotel non prima delle <strong>11:15</strong>.</div>
+    <div class="day" style="margin-top:18px">
+      <div class="day-body">
+        <div class="timeline">
+          <div class="stop"><div class="stop-time">08:30</div><div class="stop-card"><h4>London Luton Airport</h4><p>Sbarco, controllo documenti e uscita dal terminal.</p></div></div>
+          <div class="stop"><div class="stop-time">~09:15</div><div class="stop-card"><h4>Luton DART → Luton Airport Parkway</h4><p>Seguite le indicazioni <strong>Trains / Luton DART</strong>. Collega il terminal alla stazione in circa 4 minuti.</p><div class="transport">🚈 DART · circa 4 min</div></div></div>
+          <div class="stop"><div class="stop-time">~09:30</div><div class="stop-card"><h4>Thameslink → London St Pancras</h4><p>Treno diretto. Prenotando il biglietto da "Luton Airport" il DART è incluso nel prezzo.</p><div class="transport">🚆 Thameslink · Luton Airport Parkway → St Pancras</div><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=London+Luton+Airport&destination=Premier+Inn+London+St+Pancras+Station&travelmode=transit">📍 Percorso completo</a></div></div></div>
+          <div class="stop"><div class="stop-time">~10:30</div><div class="stop-card"><h4>Premier Inn St Pancras</h4><p>Deposito zaini, bagno e pausa. <strong>Uscita prevista 11:15.</strong></p><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Premier+Inn+London+St+Pancras+Station">🏨 Hotel su Maps</a></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIORNO 19 -->
+  <section id="d19" class="section">
+    <div class="day">
+      <div class="day-cover">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Market_Camden_Lock_%289163845575%29.jpg/960px-Market_Camden_Lock_%289163845575%29.jpg" data-fb="https://www.weroad.it/cdn-cgi/image/q%3D75%2Cscq%3D60%2Cf%3Dauto/https%3A/strapi-imaginary.weroad.it/resource/medium/158325/camden-market-statue-robot.jpg" onerror="nextImg(this)" onload="this.classList.add('ok')" alt="Camden Market"/><a class="ta-link" href="https://www.tripadvisor.it/Search?q=Camden+Market" target="_blank" rel="noopener" aria-label="Apri Camden Market su Tripadvisor"><span>Tripadvisor ↗</span></a>
+        <div class="day-title"><small>Mercoledì 19 maggio · LIGHT DAY</small><h3>Camden + West End</h3></div>
+      </div>
+      <div class="day-body">
+        <p class="photos-heading">📸 Le tappe del giorno</p>
+        <div class="photo-grid">
+          <div class="photo-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Market_Camden_Lock_%289163845575%29.jpg/960px-Market_Camden_Lock_%289163845575%29.jpg" data-fb="https://www.weroad.it/cdn-cgi/image/q%3D75%2Cscq%3D60%2Cf%3Dauto/https%3A/strapi-imaginary.weroad.it/resource/medium/158325/camden-market-statue-robot.jpg" onerror="nextImg(this)" onload="this.classList.add('ok')" alt="Camden Market"/><a class="ta-link" href="https://www.tripadvisor.it/Search?q=Camden+Market" target="_blank" rel="noopener" aria-label="Apri Camden Market su Tripadvisor"><span>Tripadvisor ↗</span></a>
+            <div class="photo-caption"><b>Camden Market</b><span>Mercati, street food e atmosfera alternativa.</span></div>
+          </div>
+          <div class="photo-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/%E6%9F%AF%E8%8A%AC%E5%9C%92_%2840400019900%29.jpg/960px-%E6%9F%AF%E8%8A%AC%E5%9C%92_%2840400019900%29.jpg" data-fb="https://wips.plug.it/cips/supereva/cms/2016/03/covent-garden-londra.jpg?a=c&h=630&w=1200" onerror="nextImg(this)" onload="this.classList.add('ok')" alt="Covent Garden"/><a class="ta-link" href="https://www.tripadvisor.it/Search?q=Covent+Garden" target="_blank" rel="noopener" aria-label="Apri Covent Garden su Tripadvisor"><span>Tripadvisor ↗</span></a>
+            <div class="photo-caption"><b>Covent Garden</b><span>Piazza, mercato coperto e artisti di strada.</span></div>
+          </div>
+          <div class="photo-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Chinatown.london.700px.jpg" data-fb="https://upload.wikimedia.org/wikipedia/en/a/ab/Chinatown.london.700px.jpg|https://unsplash.com/photos/YfNeQD8AQS0/download?w=1200|https://media.timeout.com/images/106106362/1372/772/image.jpg" onerror="nextImg(this)" onload="this.classList.add('ok')" alt="Chinatown Gerrard Street"/><a class="ta-link" href="https://www.tripadvisor.it/Search?q=Chinatown+London" target="_blank" rel="noopener" aria-label="Apri Chinatown Gerrard Street su Tripadvisor"><span>Tripadvisor ↗</span></a>
+            <div class="photo-caption"><b>Chinatown</b><span>Lanterne rosse e ristoranti di Gerrard Street.</span></div>
+          </div>
+          <div class="photo-card">
+            <img src="https://cdn.foodism.co.uk/featured_image_x_large_2x/646f1543679a0.jpeg" data-fb="" onerror="nextImg(this)" onload="this.classList.add('ok')" alt="Carnaby Street"/><a class="ta-link" href="https://www.tripadvisor.it/Search?q=Carnaby+Street" target="_blank" rel="noopener" aria-label="Apri Carnaby Street su Tripadvisor"><span>Tripadvisor ↗</span></a>
+            <div class="photo-caption"><b>Carnaby Street</b><span>Una delle vie più vivaci di Soho.</span></div>
+          </div>
+        </div>
+        <div class="timeline">
+          <div class="stop"><div class="stop-time">11:15</div><div class="stop-card"><h4>King's Cross + Platform 9¾</h4><p>Prima tappa vicinissima all'hotel: foto e atmosfera Harry Potter.</p><div class="transport">🚶 A piedi · 5–7 min</div><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Premier+Inn+London+St+Pancras+Station&destination=Platform+9+3%2F4+Kings+Cross&travelmode=walking">📍 Google Maps</a></div></div></div>
+          <div class="stop"><div class="stop-time">~12:00</div><div class="stop-card"><h4>Camden Town + Camden Market</h4><p>Da King's Cross prendete la <span class="tube northern">Northern</span> direzione nord fino a <strong>Camden Town</strong>, poi 5–8 min a piedi.</p><div class="transport">🚇 Northern line · King's Cross → Camden Town</div><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=King%27s+Cross+St+Pancras+Underground+Station&destination=Camden+Market&travelmode=transit">📍 Google Maps</a></div></div></div>
+          <div class="stop"><div class="stop-time pranzo">🌮 Pranzo</div><div class="stop-card pranzo"><h4>🌮 Pranzo · Camden Market</h4><p>Street food: ognuno sceglie quello che vuole. Ideale con i bambini, senza perdere tempo.</p></div></div>
+          <div class="stop"><div class="stop-time">15:00</div><div class="stop-card"><h4>Covent Garden</h4><p>Da Camden Town, <span class="tube northern">Northern</span> fino a <strong>Leicester Square</strong>, poi 8–10 min a piedi.</p><div class="transport">🚇 Northern · Camden Town → Leicester Square + 🚶</div><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Camden+Market&destination=Covent+Garden&travelmode=transit">📍 Google Maps</a></div></div></div>
+          <div class="stop"><div class="stop-time">16:30</div><div class="stop-card"><h4>Leicester Square → Chinatown</h4><p>Tutto a piedi. Gerrard Street, negozi e insegne rosse.</p><div class="transport">🚶 10–15 min con soste</div><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Covent+Garden&destination=Chinatown+London&travelmode=walking">📍 Google Maps</a></div></div></div>
+          <div class="stop"><div class="stop-time">17:40</div><div class="stop-card"><h4>Piccadilly Circus → Regent St → Carnaby → Liberty</h4><p>Il tratto più "cartolina" della giornata. Tutto a piedi, senza orari rigidi.</p><div class="transport">🚶 Passeggiata West End</div><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Chinatown+London&destination=Liberty+London&travelmode=walking&waypoints=Piccadilly+Circus%7CRegent+Street%7CCarnaby+Street">📍 Percorso completo</a></div></div></div>
+          <div class="stop"><div class="stop-time cena">🍽️ Cena</div><div class="stop-card cena"><h4>🍽️ Cena · Soho/Carnaby</h4><p><strong>Dishoom Carnaby</strong> come prima scelta; alternativa <strong>Flat Iron Soho</strong>.</p><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Dishoom+Carnaby+London">Dishoom su Maps</a></div></div></div>
+          <div class="stop"><div class="stop-time">19:30+</div><div class="stop-card"><h4>Rientro hotel</h4><p>Da <strong>Piccadilly Circus</strong> prendete la <span class="tube piccadilly">Piccadilly</span> diretta fino a <strong>King's Cross St Pancras</strong>.</p><div class="transport">🚇 Piccadilly line · Piccadilly Circus → King's Cross</div><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Soho+London&destination=Premier+Inn+London+St+Pancras+Station&travelmode=transit">📍 Rientro in hotel</a></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIORNO 20 -->
+  <section id="d20" class="section">
+    <div class="day">
+      <div class="day-cover">
+        <img src="https://static.wikia.nocookie.net/harrypotter/images/b/be/Hogwarts_model_Half-Blood_Prince.jpg/revision/latest" data-fb="https://c8.alamy.com/comp/T0AA21/warner-bros-studio-tour-london-unveils-the-original-gringotts-wizarding-bank-T0AA21.jpg|https://c8.alamy.com/comp/2BWMK3H/harry-potter-studio-tour-backstage-objects-movies-factory-studios-london-uk-2BWMK3H.jpg" onerror="nextImg(this)" onload="this.classList.add('ok')" alt="Harry Potter Studio Tour"/><a class="ta-link" href="https://www.tripadvisor.it/Search?q=Warner+Bros.+Studio+Tour+London" target="_blank" rel="noopener" aria-label="Apri Harry Potter Studio Tour su Tripadvisor"><span>Tripadvisor ↗</span></a>
+        <div class="day-title"><small>Giovedì 20 maggio · MAGIC DAY</small><h3>Warner Bros. Harry Potter Studios</h3></div>
+      </div>
+      <div class="day-body">
+        <p class="photos-heading">📸 Cosa vedremo agli Studios</p>
+        <div class="photo-grid three">
+          <div class="photo-card">
+            <img src="https://static.wikia.nocookie.net/harrypotter/images/b/be/Hogwarts_model_Half-Blood_Prince.jpg/revision/latest" data-fb="https://c8.alamy.com/comp/T0AA21/warner-bros-studio-tour-london-unveils-the-original-gringotts-wizarding-bank-T0AA21.jpg|https://c8.alamy.com/comp/2BWMK3H/harry-potter-studio-tour-backstage-objects-movies-factory-studios-london-uk-2BWMK3H.jpg" onerror="nextImg(this)" onload="this.classList.add('ok')" alt="Studio Tour"/><a class="ta-link" href="https://www.tripadvisor.it/Search?q=Warner+Bros.+Studio+Tour+London" target="_blank" rel="noopener" aria-label="Apri Studio Tour su Tripadvisor"><span>Tripadvisor ↗</span></a>
+            <div class="photo-caption"><b>Studio Tour</b><span>Il mondo di Harry Potter.</span></div>
+          </div>
+          <div class="photo-card">
+            <img src="https://cdn.getyourguide.com/img/tour/54b7e5406cdff.jpeg/145.jpg" data-fb="" onerror="nextImg(this)" onload="this.classList.add('ok')" alt="Great Hall"/><a class="ta-link" href="https://www.tripadvisor.it/Search?q=Warner+Bros.+Studio+Tour+London" target="_blank" rel="noopener" aria-label="Apri Great Hall su Tripadvisor"><span>Tripadvisor ↗</span></a>
+            <div class="photo-caption"><b>Great Hall</b><span>Il set originale dei film.</span></div>
+          </div>
+          <div class="photo-card">
+            <img src="https://media.tacdn.com/media/attractions-splice-spp-674x446/06/6e/fb/54.jpg" data-fb="" onerror="nextImg(this)" onload="this.classList.add('ok')" alt="Hogwarts Express"/><a class="ta-link" href="https://www.tripadvisor.it/Search?q=Warner+Bros.+Studio+Tour+London" target="_blank" rel="noopener" aria-label="Apri Hogwarts Express su Tripadvisor"><span>Tripadvisor ↗</span></a>
+            <div class="photo-caption"><b>Hogwarts Express</b><span>Il treno originale del tour.</span></div>
+          </div>
+        </div>
+        <div class="timeline">
+          <div class="stop"><div class="stop-time">08:20</div><div class="stop-card"><h4>Hotel → London Euston</h4><p>A piedi fino alla stazione <strong>London Euston</strong>.</p><div class="transport">🚶 circa 10 min</div><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Premier+Inn+London+St+Pancras+Station&destination=London+Euston+Station&travelmode=walking">📍 Google Maps</a></div></div></div>
+          <div class="stop"><div class="stop-time">~08:45</div><div class="stop-card"><h4>Euston → Watford Junction</h4><p>Treno diretto da London Euston a Watford Junction, circa 20 minuti.</p><div class="transport">🚆 Treno diretto · Euston → Watford Junction</div><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=London+Euston+Station&destination=Watford+Junction&travelmode=transit">📍 Google Maps</a></div></div></div>
+          <div class="stop"><div class="stop-time">~09:20</div><div class="stop-card"><h4>Navetta ufficiale → Studio Tour</h4><p>La <strong>navetta elettrica Warner Bros.</strong> è inclusa nel biglietto, circa 15 minuti.</p><div class="transport">🚌 Shuttle ufficiale · circa 15 min</div><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Watford+Junction&destination=Warner+Bros+Studio+Tour+London&travelmode=transit">📍 Google Maps</a><a class="btn book" target="_blank" href="https://www.wbstudiotour.co.uk/tickets/">🎟️ Biglietti ufficiali</a></div></div></div>
+          <div class="stop"><div class="stop-time">10:00–14:30</div><div class="stop-card"><h4>Studio Tour</h4><p>Great Hall, Forbidden Forest, Platform 9¾, Hogwarts Express, Diagon Alley, Gringotts e il castello. Nel vostro periodo è prevista la <strong>Summer Feature 2027</strong>.</p></div></div>
+          <div class="stop"><div class="stop-time pranzo">🍔 Pranzo</div><div class="stop-card pranzo"><h4>🍔 Pranzo · dentro gli Studios</h4><p>Pranzo rapido all'interno dello Studio Tour, per non spezzare la visita.</p></div></div>
+          <div class="stop"><div class="stop-time">~16:30</div><div class="stop-card"><h4>Rientro + Granary Square / Coal Drops Yard</h4><p>Dopo il rientro a Euston, serata tranquilla vicino all'hotel.</p><div class="transport">🚶 Zona King's Cross</div><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Premier+Inn+London+St+Pancras+Station&destination=Coal+Drops+Yard&travelmode=walking">📍 Google Maps</a></div></div></div>
+          <div class="stop"><div class="stop-time cena">🍽️ Cena</div><div class="stop-card cena"><h4>🍽️ Cena · King's Cross</h4><p><strong>German Gymnasium</strong> come prima scelta; alternativa amata <strong>Dishoom King's Cross</strong>.</p><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=German+Gymnasium+Kings+Cross">German Gymnasium su Maps</a></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIORNO 21 -->
+  <section id="d21" class="section">
+    <div class="day">
+      <div class="day-cover">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Tower_of_London_viewed_from_the_River_Thames.jpg/960px-Tower_of_London_viewed_from_the_River_Thames.jpg" data-fb="" onerror="nextImg(this)" onload="this.classList.add('ok')" alt="Tower of London"/><a class="ta-link" href="https://www.tripadvisor.it/Search?q=Tower+of+London" target="_blank" rel="noopener" aria-label="Apri Tower of London su Tripadvisor"><span>Tripadvisor ↗</span></a>
+        <div class="day-title"><small>Venerdì 21 maggio · HISTORIC LONDON</small><h3>Tower, Borough Market e British Museum</h3></div>
+      </div>
+      <div class="day-body">
+        <p class="photos-heading">📸 La Londra storica</p>
+        <div class="photo-grid">
+          <div class="photo-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Tower_of_London_viewed_from_the_River_Thames.jpg/960px-Tower_of_London_viewed_from_the_River_Thames.jpg" data-fb="" onerror="nextImg(this)" onload="this.classList.add('ok')" alt="Tower of London"/><a class="ta-link" href="https://www.tripadvisor.it/Search?q=Tower+of+London" target="_blank" rel="noopener" aria-label="Apri Tower of London su Tripadvisor"><span>Tripadvisor ↗</span></a>
+            <div class="photo-caption"><b>Tower of London</b><span>La fortezza reale e i Gioielli della Corona.</span></div>
+          </div>
+          <div class="photo-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Tower_Bridge_London_Feb_2006.jpg/960px-Tower_Bridge_London_Feb_2006.jpg" data-fb="https://cdn-goeuro.com/static_content/web/content/journey/london-tower-bridge.jpg" onerror="nextImg(this)" onload="this.classList.add('ok')" alt="Tower Bridge"/><a class="ta-link" href="https://www.tripadvisor.it/Search?q=Tower+Bridge" target="_blank" rel="noopener" aria-label="Apri Tower Bridge su Tripadvisor"><span>Tripadvisor ↗</span></a>
+            <div class="photo-caption"><b>Tower Bridge</b><span>Il ponte più iconico di Londra.</span></div>
+          </div>
+          <div class="photo-card">
+            <img src="https://blog.sothebysrealty.co.uk/hubfs/borough%20market%20london.jpg" data-fb="" onerror="nextImg(this)" onload="this.classList.add('ok')" alt="Borough Market"/><a class="ta-link" href="https://www.tripadvisor.it/Search?q=Borough+Market" target="_blank" rel="noopener" aria-label="Apri Borough Market su Tripadvisor"><span>Tripadvisor ↗</span></a>
+            <div class="photo-caption"><b>Borough Market</b><span>Street food e mercato storico.</span></div>
+          </div>
+          <div class="photo-card">
+            <img src="https://d36tnp772eyphs.cloudfront.net/blogs/1/2019/06/The-Great-Court-of-The-British-Museum.jpg" data-fb="" onerror="nextImg(this)" onload="this.classList.add('ok')" alt="British Museum Great Court"/><a class="ta-link" href="https://www.tripadvisor.it/Search?q=British+Museum" target="_blank" rel="noopener" aria-label="Apri British Museum Great Court su Tripadvisor"><span>Tripadvisor ↗</span></a>
+            <div class="photo-caption"><b>British Museum</b><span>La Grande Corte, Rosetta Stone, Egitto.</span></div>
+          </div>
+        </div>
+        <div class="notice" style="margin-bottom:20px"><strong>🎨 Bonus Tate Modern:</strong> lungo la passeggiata sul Tamigi. Se avete ancora energie, 20–30 minuti; la collezione permanente è gratuita.</div>
+        <div class="timeline">
+          <div class="stop"><div class="stop-time">09:10</div><div class="stop-card"><h4>Hotel → Tower Hill</h4><p>Da King's Cross prendete la <span class="tube circle">Circle</span> fino a <strong>Tower Hill</strong>.</p><div class="transport">🚇 Circle line · King's Cross → Tower Hill</div><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Premier+Inn+London+St+Pancras+Station&destination=Tower+of+London&travelmode=transit">📍 Google Maps</a></div></div></div>
+          <div class="stop"><div class="stop-time">10:00–12:30</div><div class="stop-card"><h4>Tower of London + Crown Jewels</h4><p>Una delle visite principali del viaggio. Biglietto da comprare in anticipo.</p><div class="actions"><a class="btn book" target="_blank" href="https://www.hrp.org.uk/tower-of-london/visit/tickets-and-prices/">🎟️ Biglietti ufficiali</a></div></div></div>
+          <div class="stop"><div class="stop-time">12:30</div><div class="stop-card"><h4>Tower Bridge</h4><p>Passaggio e foto. L'interno è facoltativo.</p><div class="transport">🚶 10–15 min</div><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Tower+of+London&destination=Tower+Bridge&travelmode=walking">📍 Google Maps</a></div></div></div>
+          <div class="stop"><div class="stop-time">13:30</div><div class="stop-card"><h4>Borough Market</h4><p>Arrivo al mercato per il pranzo di street food.</p><div class="transport">🚶 Tower Bridge → Borough Market</div><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Tower+Bridge&destination=Borough+Market&travelmode=walking">📍 Google Maps</a></div></div></div>
+          <div class="stop"><div class="stop-time pranzo">🌮 Pranzo</div><div class="stop-card pranzo"><h4>🌮 Pranzo · Borough Market</h4><p>Street food puro: il posto giusto per mangiare veloce senza sedersi troppo.</p></div></div>
+          <div class="stop"><div class="stop-time">15:00</div><div class="stop-card"><h4>Globe → Tate Modern (BONUS) → Millennium Bridge → St Paul's</h4><p>Passeggiata lungo il Tamigi. Tate Modern gratuito, 20–30 min solo se avete energie.</p><div class="transport">🚶 South Bank passeggiata</div><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Borough+Market&destination=St+Paul%27s+Cathedral&travelmode=walking&waypoints=Shakespeare%27s+Globe%7CTate+Modern%7CMillennium+Bridge">📍 Percorso completo</a><a class="btn primary" target="_blank" href="https://www.tate.org.uk/visit/tate-modern">Tate Modern</a></div></div></div>
+          <div class="stop"><div class="stop-time">17:30–19:15</div><div class="stop-card"><h4>British Museum</h4><p>Highlights: Rosetta Stone, Egitto e mummie, Great Court. Ingresso gratuito; prenotazione consigliata.</p><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=St+Paul%27s+Cathedral&destination=British+Museum&travelmode=transit">📍 Google Maps</a><a class="btn book" target="_blank" href="https://www.britishmuseum.org/visit">🎟️ Prenota gratis</a></div></div></div>
+          <div class="stop"><div class="stop-time cena">🍽️ Cena</div><div class="stop-card cena"><h4>🍽️ Cena · Holborn/Bloomsbury</h4><p><strong>Honest Burgers Holborn</strong> come prima scelta; alternativa family-friendly <strong>My Old Dutch</strong>.</p><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Honest+Burgers+Holborn">Honest Burgers su Maps</a></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIORNO 22 -->
+  <section id="d22" class="section">
+    <div class="day">
+      <div class="day-cover">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Buckingham_Palace_and_Victoria_Monument_-_September_2006.jpg/960px-Buckingham_Palace_and_Victoria_Monument_-_September_2006.jpg" data-fb="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Buckingham_Palace_and_Victoria_Monument_-_September_2006.jpg/500px-Buckingham_Palace_and_Victoria_Monument_-_September_2006.jpg|https://www.allesoverlonden.nl/wp-content/uploads/buckingham-palace-londen-1.jpg" onerror="nextImg(this)" onload="this.classList.add('ok')" alt="Buckingham Palace"/><a class="ta-link" href="https://www.tripadvisor.it/Search?q=Buckingham+Palace" target="_blank" rel="noopener" aria-label="Apri Buckingham Palace su Tripadvisor"><span>Tripadvisor ↗</span></a>
+        <div class="day-title"><small>Sabato 22 maggio · ICONIC LONDON</small><h3>Museo, Harrods, Buckingham e Westminster</h3></div>
+      </div>
+      <div class="day-body">
+        <p class="photos-heading">📸 La Londra iconica</p>
+        <div class="photo-grid">
+          <div class="photo-card">
+            <img src="https://images.pexels.com/photos/14306813/pexels-photo-14306813.jpeg?cs=tinysrgb&w=1200" data-fb="https://static.designboom.com/wp-content/uploads/2017/07/blue-whale-skeleton-natural-history-museum-london-hintze-hall-casson-mann-designboom-03.jpg" onerror="nextImg(this)" onload="this.classList.add('ok')" alt="Natural History Museum"/><a class="ta-link" href="https://www.tripadvisor.it/Search?q=Natural+History+Museum+London" target="_blank" rel="noopener" aria-label="Apri Natural History Museum su Tripadvisor"><span>Tripadvisor ↗</span></a>
+            <div class="photo-caption"><b>Natural History Museum</b><span>Dinosauri, T. rex e la balena blu.</span></div>
+          </div>
+          <div class="photo-card">
+            <img src="https://res.cloudinary.com/dtljonz0f/image/upload/c_limit%2Cw_1920/f_auto/q_auto/v1/gc-v1/london-pass/London_Harrods_ss_non-editorial_nfxfpq?_a=BAVAZGDX0" data-fb="" onerror="nextImg(this)" onload="this.classList.add('ok')" alt="Harrods"/><a class="ta-link" href="https://www.tripadvisor.it/Search?q=Harrods" target="_blank" rel="noopener" aria-label="Apri Harrods su Tripadvisor"><span>Tripadvisor ↗</span></a>
+            <div class="photo-caption"><b>Harrods</b><span>Il grande magazzino di lusso di Knightsbridge.</span></div>
+          </div>
+          <div class="photo-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Buckingham_Palace_and_Victoria_Monument_-_September_2006.jpg/960px-Buckingham_Palace_and_Victoria_Monument_-_September_2006.jpg" data-fb="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Buckingham_Palace_and_Victoria_Monument_-_September_2006.jpg/500px-Buckingham_Palace_and_Victoria_Monument_-_September_2006.jpg|https://www.allesoverlonden.nl/wp-content/uploads/buckingham-palace-londen-1.jpg" onerror="nextImg(this)" onload="this.classList.add('ok')" alt="Buckingham Palace"/><a class="ta-link" href="https://www.tripadvisor.it/Search?q=Buckingham+Palace" target="_blank" rel="noopener" aria-label="Apri Buckingham Palace su Tripadvisor"><span>Tripadvisor ↗</span></a>
+            <div class="photo-caption"><b>Buckingham Palace</b><span>La residenza reale.</span></div>
+          </div>
+          <div class="photo-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Clock_Tower_-_Palace_of_Westminster%2C_London_-_September_2006.jpg/960px-Clock_Tower_-_Palace_of_Westminster%2C_London_-_September_2006.jpg" data-fb="https://img.alicdn.com/bao/uploaded/i4/6000000000466/O1CN01gx5aRo1FJThLdSIHd_%21%216000000000466-0-itemdesc.jpg" onerror="nextImg(this)" onload="this.classList.add('ok')" alt="Big Ben"/><a class="ta-link" href="https://www.tripadvisor.it/Search?q=Big+Ben+London" target="_blank" rel="noopener" aria-label="Apri Big Ben su Tripadvisor"><span>Tripadvisor ↗</span></a>
+            <div class="photo-caption"><b>Big Ben + Westminster</b><span>Il finale iconico del viaggio.</span></div>
+          </div>
+        </div>
+        <div class="timeline">
+          <div class="stop"><div class="stop-time">09:15</div><div class="stop-card"><h4>Hotel → South Kensington</h4><p>Da King's Cross prendete la <span class="tube piccadilly">Piccadilly</span> diretta fino a <strong>South Kensington</strong>.</p><div class="transport">🚇 Piccadilly line · diretta</div><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Premier+Inn+London+St+Pancras+Station&destination=Natural+History+Museum+London&travelmode=transit">📍 Google Maps</a></div></div></div>
+          <div class="stop"><div class="stop-time">10:00–12:00</div><div class="stop-card"><h4>Natural History Museum</h4><p>Dinosauri, T. rex, Hintze Hall e balena blu. Ingresso gratuito; prenotate il ticket per garantirvi l'ingresso.</p><div class="actions"><a class="btn book" target="_blank" href="https://www.nhm.ac.uk/visit.html">🎟️ Prenota gratis</a></div></div></div>
+          <div class="stop"><div class="stop-time">12:10–13:15</div><div class="stop-card"><h4>Harrods</h4><p>Da Natural History Museum a Knightsbridge, a piedi (~15 min).</p><div class="transport">🚶 circa 15 min</div><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Natural+History+Museum+London&destination=Harrods&travelmode=walking">📍 Google Maps</a></div></div></div>
+          <div class="stop"><div class="stop-time pranzo">🥪 Pranzo</div><div class="stop-card pranzo"><h4>🥪 Pranzo · Knightsbridge</h4><p>Qualcosa di rapido dopo Harrods: sandwich, bakery o food hall, senza una sosta lunga.</p></div></div>
+          <div class="stop"><div class="stop-time">14:15</div><div class="stop-card"><h4>Buckingham Palace → St James's Park → Trafalgar Square</h4><p>La grande passeggiata reale del viaggio.</p><div class="transport">🚶 Harrods → Buckingham → St James's → Trafalgar</div><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Harrods&destination=Trafalgar+Square&travelmode=walking&waypoints=Buckingham+Palace%7CSt+James%27s+Park">📍 Percorso completo</a></div></div></div>
+          <div class="stop"><div class="stop-time">15:45</div><div class="stop-card"><h4>Whitehall → Westminster → Big Ben</h4><p>Da Trafalgar Square lungo Whitehall fino a Westminster Abbey, Parlamento e Big Ben.</p><div class="transport">🚶 20–30 min con foto</div><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Trafalgar+Square&destination=Big+Ben&travelmode=walking&waypoints=Whitehall%7CWestminster+Abbey">📍 Google Maps</a></div></div></div>
+          <div class="stop"><div class="stop-time">~17:30</div><div class="stop-card"><h4>London Eye</h4><p>Attraversate Westminster Bridge. Il giro dura ~30 minuti; prenotare la fascia oraria.</p><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Big+Ben&destination=London+Eye&travelmode=walking">📍 Google Maps</a><a class="btn book" target="_blank" href="https://www.londoneye.com/tickets-and-prices/">🎟️ Biglietti ufficiali</a></div></div></div>
+          <div class="stop"><div class="stop-time">18:15</div><div class="stop-card"><h4>South Bank</h4><p>Passeggiata sul Tamigi dopo il London Eye.</p><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=London+Eye&destination=Wahaca+Southbank&travelmode=walking">📍 Verso cena</a></div></div></div>
+          <div class="stop"><div class="stop-time cena">🍽️ Cena</div><div class="stop-card cena"><h4>🍽️ Cena finale · South Bank</h4><p><strong>Wahaca Southbank</strong>: informale, kids menu e perfetto dopo il London Eye.</p><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Wahaca+Southbank+London">Wahaca su Maps</a></div></div></div>
+          <div class="stop"><div class="stop-time">19:30+</div><div class="stop-card"><h4>Rientro hotel</h4><p>Rientro verso St Pancras con i mezzi.</p><div class="actions"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Wahaca+Southbank&destination=Premier+Inn+London+St+Pancras+Station&travelmode=transit">🏨 Rientro hotel</a></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIENTRO -->
+  <section id="d23" class="section">
+    <div class="section-label">Domenica 23 maggio</div>
+    <h2>Rientro a casa</h2>
+    <p class="sub">Volo Luton 09:15 → Roma Fiumicino 12:50</p>
+    <div class="notice"><strong>Piano consigliato:</strong> non fare affidamento sul primo Thameslink domenicale. Prenotate <strong>Uber / transfer intorno alle 05:30</strong>, puntando ad arrivare a Luton circa 06:30–06:45.</div>
+    <div class="actions" style="margin-top:14px"><a class="btn map" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Premier+Inn+London+St+Pancras+Station&destination=London+Luton+Airport&travelmode=driving">🚕 Hotel → Luton Airport</a></div>
+  </section>
+
+  <!-- DA PRENOTARE -->
+  <section id="prenota" class="section">
+    <div class="section-label">Lista prenotazioni</div>
+    <h2>Da prenotare prima</h2>
+    <p class="sub">Bloccate tutto appena avete deciso gli orari.</p>
+    <div class="book-grid">
+      <div class="book-card"><h4>🪄 Harry Potter Studios</h4><p>Priorità alta. Suggerimento: ingresso ~10:00 del 20 maggio.</p><a class="btn book" target="_blank" href="https://www.wbstudiotour.co.uk/tickets/">Biglietti ufficiali</a></div>
+      <div class="book-card"><h4>🏰 Tower of London</h4><p>Da comprare in anticipo per il 21 maggio mattina.</p><a class="btn book" target="_blank" href="https://www.hrp.org.uk/tower-of-london/visit/tickets-and-prices/">Biglietti ufficiali</a></div>
+      <div class="book-card"><h4>🦕 Natural History Museum</h4><p>Gratuito, ma prenotate l'ingresso per sabato 22.</p><a class="btn book" target="_blank" href="https://www.nhm.ac.uk/visit.html">Prenota gratis</a></div>
+      <div class="book-card"><h4>🏛️ British Museum</h4><p>Gratuito. Prenotazione consigliata per venerdì 21 tardo pomeriggio.</p><a class="btn book" target="_blank" href="https://www.britishmuseum.org/visit">Prenota gratis</a></div>
+      <div class="book-card"><h4>🎡 London Eye</h4><p>Fascia oraria consigliata: 17:30–18:00 del 22 maggio.</p><a class="btn book" target="_blank" href="https://www.londoneye.com/tickets-and-prices/">Biglietti ufficiali</a></div>
+      <div class="book-card"><h4>🎨 Tate Modern</h4><p>Collezione permanente gratuita — solo se avete tempo ed energie.</p><a class="btn primary" target="_blank" href="https://www.tate.org.uk/visit/tate-modern">Info ufficiali</a></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="notice"><strong>Nota:</strong> orari di metro, treni, attrazioni e aperture di maggio 2027 possono cambiare. Conviene ricontrollare timetable e aperture definitivi 1–3 mesi prima del viaggio.</div>
+  </section>
+
+  <div class="footer">Itinerario di <strong>Stefano, Katrin, Niccolò &amp; Carlotta</strong> · Londra 19–23 maggio 2027 · 4 notti · Premier Inn London St Pancras Station.</div>
+</main>
+
+</body>
+</html>
